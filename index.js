@@ -41,7 +41,7 @@ function checkDate(req, res, next) {
   if (!rawDate) {
     console.error("Date is empty!");
     let date = new Date();
-    res.json({ unix: GetUnix(date), utc: GetUTC(date) });
+    res.json({ unix: getUnix(date), utc: getUTC(date) });
     return;
   }
 
