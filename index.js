@@ -49,9 +49,13 @@ function checkDate(req, res, next) {
 
   // if input date invalid
   if (isNaN(date)) {
-    console.error("Date is invalid!");
-    res.json({ error: "Invalid Date" });
-    return;
+    let number = Number(rawDate);
+    if (isNaN(number)) { // Check if rawDate is a number, if it is then use it to get Date
+      console.error("Date is invalid!");
+      res.json({ error: "Invalid Date" });
+      return;
+    }
+    date = new Date(number);
   }
 
   req.params.date = date;
